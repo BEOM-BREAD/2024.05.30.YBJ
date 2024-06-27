@@ -5,11 +5,11 @@
 
 using ColorNum = int;
 
-class RectCollider
+class RectCollider 
 {
 public:
 	RectCollider(Vector2 center, Vector2 halfsize);
-	~RectCollider() {}
+	~RectCollider();
 
 	void Update();
 	void Render(HDC hdc);

@@ -44,7 +44,9 @@ bool CircleCollider::IsCollision(Vector2 point)
 
 bool CircleCollider::IsCollision(shared_ptr<CircleCollider> other)
 {
-	return false;
+	float distance = _center.Distance(other->_center);
+
+	return distance < _radius + other->_radius;
 }
 
 void CircleCollider::SetColor(ColorNum num)

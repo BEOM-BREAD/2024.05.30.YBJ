@@ -3,7 +3,6 @@
 
 float Vector2::Length() const
 {
-	return 0.0f;
 	return sqrt(_x * _x + _y * _y);
 }
 
