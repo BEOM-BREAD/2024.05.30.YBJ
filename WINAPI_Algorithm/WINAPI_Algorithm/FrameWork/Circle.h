@@ -13,7 +13,7 @@ public:
 	void Render(HDC hdc);
 
 	bool IsCollision(Vector2 point);
-	bool IsCollision(shared_ptr<class CircleCollider> other);
+	bool IsCollision(shared_ptr<CircleCollider> other);
 	bool IsCollision(shared_ptr<RectCollider> other);
 
 	void SetGreen() { SetColor(GREEN_COLOR); }

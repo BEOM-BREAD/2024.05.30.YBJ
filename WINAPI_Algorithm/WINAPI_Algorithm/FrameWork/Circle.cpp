@@ -49,6 +49,14 @@ bool CircleCollider::IsCollision(shared_ptr<CircleCollider> other)
 	return distance < _radius + other->_radius;
 }
 
+bool CircleCollider::IsCollision(shared_ptr<RectCollider> other)
+{
+	// 과제
+	// AABB(회전하지 않는다는 조건), OBB (회전이 가능하다)
+
+	return false;
+}
+
 void CircleCollider::SetColor(ColorNum num)
 {
 	_curPen = _pens[num];

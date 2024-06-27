@@ -22,6 +22,7 @@ using namespace std;
 #include "FrameWork/Vector2.h"
 #include "FrameWork/Rect.h"
 #include "FrameWork/Circle.h"
+#include "FrameWork/Line.h"
 
 // Program
 #include"Program/Program.h"
@@ -29,6 +30,7 @@ using namespace std;
 // Scene
 #include "Scene/Scene.h"
 #include "Scene/PaintScene.h"
+#include "Scene/LineScene.h"
 
 
 extern Vector2 mousePos;
