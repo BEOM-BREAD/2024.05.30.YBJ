@@ -147,11 +147,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Collider.h" />
     <ClInclude Include="FrameWork\Line.h" />
+    <ClInclude Include="Scene\Line2Scene.h" />
     <ClInclude Include="Scene\LineScene.h" />
     <ClInclude Include="Scene\CollisionScene.h" />
-    <ClInclude Include="FrameWork\Circle.h" />
-    <ClInclude Include="FrameWork\Rect.h" />
+    <ClInclude Include="FrameWork\CircleCollider.h" />
+    <ClInclude Include="FrameWork\RectCollider.h" />
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="Scene\PaintScene.h" />
     <ClInclude Include="pch.h" />
@@ -163,11 +165,13 @@
     <ClInclude Include="WINAPI_Algorithm.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Collider.cpp" />
     <ClCompile Include="FrameWork\Line.cpp" />
+    <ClCompile Include="Scene\Line2Scene.cpp" />
     <ClCompile Include="Scene\LineScene.cpp" />
     <ClCompile Include="Scene\CollisionScene.cpp" />
-    <ClCompile Include="FrameWork\Circle.cpp" />
-    <ClCompile Include="FrameWork\Rect.cpp" />
+    <ClCompile Include="FrameWork\CircleCollider.cpp" />
+    <ClCompile Include="FrameWork\RectCollider.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
     <ClCompile Include="Scene\PaintScene.cpp" />
     <ClCompile Include="pch.cpp">

@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "Rect.h"
+#include "RectCollider.h"
 
 #define GREEN_COLOR		 0
 #define RED_COLOR	     1
@@ -37,10 +37,8 @@ void RectCollider::Render(HDC hdc)
 
 bool RectCollider::IsCollision(Vector2 point)
 {
-	//  포인트 x가 left, right 사이에 있나?
 	if (point._x < Right() && point._x > Left())
 	{
-		//포인트 y사 bottom, top 사이에 있나?
 		if (point._y < Bottom() && point._y > Top())
 			return true;
 	}
