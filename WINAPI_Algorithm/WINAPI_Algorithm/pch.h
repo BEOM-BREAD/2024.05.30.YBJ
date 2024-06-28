@@ -20,6 +20,7 @@ using namespace std;
 
 // FrameWork
 #include "FrameWork/Vector2.h"
+#include "FrameWork/Collider.h"
 #include "FrameWork/RectCollider.h"
 #include "FrameWork/CircleCollider.h"
 #include "FrameWork/Line.h"

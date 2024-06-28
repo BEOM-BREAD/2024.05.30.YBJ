@@ -60,7 +60,7 @@
     <ClInclude Include="Scene\Line2Scene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Collider.h">
+    <ClInclude Include="FrameWork\Collider.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -101,7 +101,7 @@
     <ClCompile Include="Scene\Line2Scene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Collider.cpp">
+    <ClCompile Include="FrameWork\Collider.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
