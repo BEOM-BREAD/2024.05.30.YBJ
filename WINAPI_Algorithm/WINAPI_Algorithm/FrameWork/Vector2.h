@@ -24,6 +24,22 @@ public:
 		return result;
 	}
 
+	Vector2& operator+=(const Vector2& other)
+	{
+		this->_x += other._x;
+		this->_y += other._y;
+
+		return (*this);
+	}
+
+	Vector2& operator-=(const Vector2& other)
+	{
+		this->_x -= other._x;
+		this->_y -= other._y;
+
+		return (*this);
+	}
+
 	Vector2 operator*(float value)
 	{
 		Vector2 result;
@@ -87,6 +103,6 @@ public:
 
 	bool IsBetween(Vector2 v1, Vector2 v2);
 
-	int _x;
-	int _y;
+	float _x;
+	float _y;
 };
