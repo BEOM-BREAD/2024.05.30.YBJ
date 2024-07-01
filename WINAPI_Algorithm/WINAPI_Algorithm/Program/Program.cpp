@@ -8,7 +8,7 @@
 
 Program::Program()
 {
-	_scene = make_shared<CollisionScene>();
+	_scene = make_shared<Line2Scene>();
 }
 
 Program::~Program()

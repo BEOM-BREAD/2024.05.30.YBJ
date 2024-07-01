@@ -13,11 +13,13 @@ float Vector2::Distance(Vector2 other) const
 	return temp.Length();
 }
 
+
 void Vector2::Normalize()
 {
 	float length = Length();
 	_x = _x / length;
 	_y = _y / length;
+
 }
 
 Vector2 Vector2::NormalVector2()
