@@ -6,7 +6,7 @@ public:
 	~Program();
 
 	void Update();
-	// ±×¸®±â
+	// ê·¸ë¦¬ê¸°
 	void Render(HDC hdc);
 
 private:

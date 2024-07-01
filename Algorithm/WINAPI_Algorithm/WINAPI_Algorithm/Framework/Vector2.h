@@ -1,4 +1,5 @@
 #pragma once
+
 class Vector2
 {
 public:
@@ -78,8 +79,8 @@ public:
 	}
 
 	float Length() const;
-
-	float Distance(Vector2 other)const;
+	float Distance(Vector2 other) const;
+	float Angle() const;
 
 	void Normalize();
 
@@ -87,6 +88,6 @@ public:
 
 	bool IsBetween(Vector2 v1, Vector2 v2);
 
-	int _x;
-	int _y;
+	float _x;
+	float _y;
 };

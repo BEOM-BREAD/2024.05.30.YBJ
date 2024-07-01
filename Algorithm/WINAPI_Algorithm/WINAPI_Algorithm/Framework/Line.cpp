@@ -2,17 +2,17 @@
 #include "Line.h"
 
 Line::Line(Vector2 start, Vector2 end)
-:_start(start), _end(end)
+: _start(start), _end(end)
 {
-	_pens.push_back(CreatePen(PS_SOLID, 3, RED));
-	_pens.push_back(CreatePen(PS_SOLID, 3, GREEN));
+	_pens.push_back(CreatePen(PS_SOLID,3,RED));
+	_pens.push_back(CreatePen(PS_SOLID,3,GREEN));
 
 	SetGreen();
 }
 
 Line::~Line()
 {
-	for (auto pen : _pens)
+	for(auto pen : _pens)
 		DeleteObject(pen);
 }
 
@@ -24,8 +24,8 @@ void Line::Render(HDC hdc)
 {
 	SelectObject(hdc, _curPen);
 
-	MoveToEx(hdc, _start._x, _start._y, nullptr);
-	LineTo(hdc, _end._x, _end._y);
+	MoveToEx(hdc,_start._x, _start._y,nullptr);
+	LineTo(hdc,_end._x,_end._y);
 }
 
 HResult Line::IsCollision(shared_ptr<Line> other)
@@ -44,7 +44,7 @@ HResult Line::IsCollision(shared_ptr<Line> other)
 	Vector2 B2 = _start - other->_start;
 	Vector2 B3 = _end - other->_start;
 
-	bool check2 = B1.IsBetween(B2, B3);
+	bool check2 = B1.IsBetween(B2,B3);
 
 	result.isCollision = check1 && check2;
 
@@ -60,3 +60,4 @@ HResult Line::IsCollision(shared_ptr<Line> other)
 
 	return result;
 }
+

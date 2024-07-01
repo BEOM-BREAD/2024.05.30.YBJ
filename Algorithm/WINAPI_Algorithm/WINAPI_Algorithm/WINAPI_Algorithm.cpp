@@ -100,10 +100,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
-
    // Window Handle : 인력사무소장
    // 영화촬영 : 나(감독)
-   // WHND : 인력사무소장
+   // HWND : 인력사무소장
    // 연출감독
    // 배우
    // ...
@@ -138,8 +137,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_CREATE:
     {
         program = make_shared<Program>();
-        SetTimer(hWnd, 1, 1, nullptr); // 0.01초마다 WM_TIMER 메세지를 보낸다.
+        SetTimer(hWnd,1,1,nullptr); // 0.01초마다 WM_TIMER 메시지를 보낸다.
     }
+    break;
+
     case WM_COMMAND:
         {
             int wmId = LOWORD(wParam);
@@ -160,7 +161,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_TIMER:
     {
         program->Update();
-        InvalidateRect(hWnd, nullptr, true); // WM_PAINT 메세지와 관련된 얘
+        InvalidateRect(hWnd, nullptr, true); // WM_PAINT 메시지와 관련된 얘
     }
     break;
 
@@ -174,8 +175,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_PAINT:
         {
             PAINTSTRUCT ps;
-            // device context handle -> 연출감독
-            // -> 그릴 때 무조건 필요한 객체
+            // device context handle => 연출감독
+            // => 그릴 때 무조건 필요한 객체
             HDC hdc = BeginPaint(hWnd, &ps);
 
             program->Render(hdc);

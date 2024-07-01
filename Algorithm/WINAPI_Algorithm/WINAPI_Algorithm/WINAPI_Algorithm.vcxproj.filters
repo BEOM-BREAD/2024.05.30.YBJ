@@ -36,13 +36,13 @@
     <ClInclude Include="Scene\Scene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="FrameWork\RectCollider.h">
+    <ClInclude Include="Framework\RectCollider.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="FrameWork\Vector2.h">
+    <ClInclude Include="Framework\Vector2.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="FrameWork\CircleCollider.h">
+    <ClInclude Include="Framework\CircleCollider.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Types.h">
@@ -51,7 +51,7 @@
     <ClInclude Include="Scene\CollisionScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="FrameWork\Line.h">
+    <ClInclude Include="Framework\Line.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Scene\LineScene.h">
@@ -60,7 +60,7 @@
     <ClInclude Include="Scene\Line2Scene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="FrameWork\Collider.h">
+    <ClInclude Include="Framework\Collider.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -80,19 +80,19 @@
     <ClCompile Include="Scene\Scene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="FrameWork\RectCollider.cpp">
+    <ClCompile Include="Framework\RectCollider.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="FrameWork\Vector2.cpp">
+    <ClCompile Include="Framework\Vector2.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="FrameWork\CircleCollider.cpp">
+    <ClCompile Include="Framework\CircleCollider.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Scene\CollisionScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="FrameWork\Line.cpp">
+    <ClCompile Include="Framework\Line.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Scene\LineScene.cpp">
@@ -101,7 +101,7 @@
     <ClCompile Include="Scene\Line2Scene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="FrameWork\Collider.cpp">
+    <ClCompile Include="Framework\Collider.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

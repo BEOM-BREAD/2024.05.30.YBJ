@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{9fe00330-8046-4f17-9c2d-acf3f9afe003}</ProjectGuid>
+    <ProjectGuid>{8e729ff3-9dba-4885-a0ed-ff31fd9231fb}</ProjectGuid>
     <RootNamespace>WINAPIAlgorithm</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -147,31 +147,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="FrameWork\Collider.h" />
-    <ClInclude Include="FrameWork\Line.h" />
+    <ClInclude Include="Framework\Collider.h" />
+    <ClInclude Include="Framework\Line.h" />
     <ClInclude Include="Scene\Line2Scene.h" />
     <ClInclude Include="Scene\LineScene.h" />
     <ClInclude Include="Scene\CollisionScene.h" />
-    <ClInclude Include="FrameWork\CircleCollider.h" />
-    <ClInclude Include="FrameWork\RectCollider.h" />
+    <ClInclude Include="Framework\CircleCollider.h" />
+    <ClInclude Include="Framework\RectCollider.h" />
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="Scene\PaintScene.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Program\Program.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="FrameWork\Vector2.h" />
+    <ClInclude Include="Framework\Vector2.h" />
     <ClInclude Include="Types.h" />
     <ClInclude Include="WINAPI_Algorithm.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="FrameWork\Collider.cpp" />
-    <ClCompile Include="FrameWork\Line.cpp" />
+    <ClCompile Include="Framework\Collider.cpp" />
+    <ClCompile Include="Framework\Line.cpp" />
     <ClCompile Include="Scene\Line2Scene.cpp" />
     <ClCompile Include="Scene\LineScene.cpp" />
     <ClCompile Include="Scene\CollisionScene.cpp" />
-    <ClCompile Include="FrameWork\CircleCollider.cpp" />
-    <ClCompile Include="FrameWork\RectCollider.cpp" />
+    <ClCompile Include="Framework\CircleCollider.cpp" />
+    <ClCompile Include="Framework\RectCollider.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
     <ClCompile Include="Scene\PaintScene.cpp" />
     <ClCompile Include="pch.cpp">
@@ -185,7 +185,7 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="Program\Program.cpp" />
-    <ClCompile Include="FrameWork\Vector2.cpp" />
+    <ClCompile Include="Framework\Vector2.cpp" />
     <ClCompile Include="WINAPI_Algorithm.cpp" />
   </ItemGroup>
   <ItemGroup>

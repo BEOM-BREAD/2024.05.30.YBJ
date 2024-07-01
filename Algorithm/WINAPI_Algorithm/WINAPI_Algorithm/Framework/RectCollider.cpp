@@ -1,22 +1,14 @@
 #include "pch.h"
 #include "RectCollider.h"
 
-#define GREEN_COLOR		 0
-#define RED_COLOR	     1
-
 RectCollider::RectCollider(Vector2 center, Vector2 halfSize)
-	: _center(center), _halfSize(halfSize)
+: Collider(center), _halfSize(halfSize)
 {
-	_pens.push_back(CreatePen(PS_SOLID, 3, GREEN));
-	_pens.push_back(CreatePen(PS_SOLID, 3, RED));
-
-	SetColor(GREEN_COLOR);
+	_type = ColliderType::RECT;
 }
 
 RectCollider::~RectCollider()
 {
-	for (auto pen : _pens)
-		DeleteObject(pen);
 }
 
 void RectCollider::Update()
@@ -32,14 +24,16 @@ void RectCollider::Render(HDC hdc)
 	int top = _center._y - _halfSize._y;
 	int bottom = _center._y + _halfSize._y;
 
-	Rectangle(hdc, left, top, right, bottom);
+	Rectangle(hdc,left,top,right,bottom);
 }
 
 bool RectCollider::IsCollision(Vector2 point)
 {
+	// 포인트.x가 left,right 사이에 있냐?
 	if (point._x < Right() && point._x > Left())
 	{
-		if (point._y < Bottom() && point._y > Top())
+		// 포인트.y가 bottom,top 사이에 있냐?
+		if(point._y < Bottom() && point._y > Top())
 			return true;
 	}
 
@@ -55,14 +49,9 @@ bool RectCollider::IsCollision(shared_ptr<RectCollider> other)
 {
 	if (Right() > other->Left() && Left() < other->Right())
 	{
-		if (Bottom() > other->Top() && Top() < other->Bottom());
+		if(Bottom() > other->Top() && Top() < other->Bottom())
 			return true;
 	}
 
 	return false;
-}
-
-void RectCollider::SetColor(ColorNum num)
-{
-	_curPen = _pens[num];
 }
