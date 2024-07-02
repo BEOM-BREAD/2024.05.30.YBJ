@@ -10,16 +10,15 @@ public:
 
 	void Fire(Vector2 startPos, Vector2 direction);
 
-	void SetActive(bool IsActive);
+	void SetActive(bool isActive);
 	bool IsActive() { return _isActive; }
 	bool IsOut();
-	// void OutControll();
 
 	// Attack1
 	void Attack_Cannon(shared_ptr<class Cannon> cannon);
 
 	// Attack2
-	void Attack_cannon();
+	void Attack_Cannon();
 	void SetTarget(shared_ptr<Cannon> cannon) { _target = cannon; }
 
 private:
@@ -33,8 +32,7 @@ private:
 	float _lifeTime = 0.0f;
 	float _delayTime = 3.0f;
 
-	//Attack2
+	// Attack2
 	weak_ptr<Cannon> _target;
-
 };
 

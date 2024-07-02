@@ -4,12 +4,11 @@
 #include "Object/Bullet.h"
 
 Cannon::Cannon()
-	: _hp(5)
 {
-	_body = make_shared<CircleCollider>(CENTER, 50.0f); 
+	_body = make_shared<CircleCollider>(CENTER, 50.0f);
 	_barrel = make_shared<Barrel>();
-	
-	for (int i = 0;i < 30;i++)
+
+	for (int i = 0;i < 3;i++)
 	{
 		shared_ptr<Bullet> bullet = make_shared<Bullet>();
 		bullet->SetActive(false);
@@ -25,6 +24,11 @@ Cannon::~Cannon()
 
 void Cannon::Update()
 {
+	if (!IsActive)
+	{
+		return;
+	}
+
 	if (isControlled)
 	{
 		Move();
@@ -40,15 +44,21 @@ void Cannon::Update()
 
 void Cannon::Render(HDC hdc)
 {
+	if (!IsActive)
+	{
+		return;
+	}
+
 	_barrel->Render(hdc);
 	_body->Render(hdc);
-	
+
 	for (auto bullet : _bullets)
 		bullet->Render(hdc);
 }
 
 void Cannon::Move()
 {
+	if (!IsActive) return;
 	if (GetAsyncKeyState(VK_RIGHT))
 	{
 		_body->_center._x += 1.0f;
@@ -73,50 +83,45 @@ void Cannon::Move()
 
 void Cannon::Fire()
 {
-	// KET DOWN
-	//if (GetAsyncKeyState(VK_SPACE) & 0x0001)
-	//{
-	//	for (auto bullet : _bullets)
-	//	{
-	//		if (bullet->IsActive() == false)
-	//	{
-	//			bullet->Fire(_barrel->GetEndPos(), _barrel->GetDirection());
-	//			break;
-	//	}
-	//	}
-	//}
-
-	//	auto iter = std::find_if(_bullets.begin(), _bullets.end(),
-	//		[](shared_ptr<Bullet> bullet)->bool
-	//		{
-	//			if (bullet->IsActive()) return true;
-	//			return false;
-	//		});
-
-	//	if (iter != _bullets.end())
-	//	{
-	//		(*iter)->Fire(_barrel->GetEndPos(), _barrel->GetDirection());
-	//	}
-	//}
+	if (!IsActive) return;
+	// KEY DOWN
 	if (GetAsyncKeyState(VK_SPACE) & 0x0001)
 	{
-		for (auto bullet : _bullets)
-		{
-			if (!bullet->IsActive())
+		// _bullets... 꺼진 얘(isActive == false)가 있는지 확인하고
+		// -> 꺼진 애를 찾아서 Fire
+
+		//_bullet->Fire(_barrel->GetEndPos(), _barrel->GetDirection());
+
+		//for (auto bullet : _bullets)
+		//{
+		//	if (bullet->IsActive() == false)
+		//	{
+		//		bullet->Fire(_barrel->GetEndPos(), _barrel->GetDirection());
+		//		break;
+		//	}
+		//}
+
+		auto iter = std::find_if(_bullets.begin(), _bullets.end(),
+			[](shared_ptr<Bullet> bullet)->bool
 			{
-				bullet->Fire(_barrel->GetEndPos(), _barrel->GetDirection());
-				break;
-			}
+				if (!bullet->IsActive()) return true;
+				return false;
+			});
+
+		if (iter != _bullets.end())
+		{
+			(*iter)->Fire(_barrel->GetEndPos(), _barrel->GetDirection());
+			_bulletvs++;
 		}
 	}
+
 }
 
 void Cannon::TakeDamage()
 {
 	_hp--;
-
-	if (_hp <= 0)
+	if (IsDead())
 	{
-		_body->_center = Vector2(-1000, -1000);
+		IsActive = false;
 	}
 }

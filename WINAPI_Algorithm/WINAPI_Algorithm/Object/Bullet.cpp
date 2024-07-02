@@ -1,10 +1,10 @@
 #include "pch.h"
 #include "Bullet.h"
-#include "Object/Cannon.h"
+#include "Cannon.h"
 
 Bullet::Bullet()
 {
-	_col = make_shared<CircleCollider>(Vector2(CENTER), 7);
+	_col = make_shared<CircleCollider>(CENTER, 7);
 }
 
 Bullet::~Bullet()
@@ -15,25 +15,21 @@ void Bullet::Update()
 {
 	if (_isActive == false) return;
 
-	Attack_cannon();
+	Attack_Cannon();
 
 	_col->Update();
 	_col->_center += _direction * _speed;
 
-	// TODO(과제) : 중력 적용
 	_col->_center += _downVector;
 	_downVector += Vector2(0, 1) * GRAVITY;
 
-	// TODO(과제) : 화면 밖으로 나갔을 시 사라지는 코드
-	// OutControll은 반사를 위한 함수
-	// bool isout = IsOut();
-	//OutControll();
-	bool isout = IsOut();
-	if (_lifeTime > _delayTime || isout)
+	bool isOut = IsOut();
+	if (_lifeTime > _delayTime || isOut)
 	{
 		_lifeTime = 0.0f;
 		_isActive = false;
 	}
+
 	_lifeTime += 0.01f;
 }
 
@@ -53,10 +49,10 @@ void Bullet::Fire(Vector2 startPos, Vector2 direction)
 	_downVector = Vector2();
 }
 
-void Bullet::SetActive(bool IsActive)
+void Bullet::SetActive(bool isActive)
 {
 	_downVector = Vector2();
-	_isActive = IsActive;
+	_isActive = isActive;
 }
 
 bool Bullet::IsOut()
@@ -70,41 +66,28 @@ bool Bullet::IsOut()
 	return false;
 }
 
-//void Bullet::OutControll()
-//{
-//	Vector2 center = _col->_center;
-//	// 화면 좌우로 나갔나?
-//	if (center._x > WIN_WIDTH || center._x < 0)
-//	{
-//		_direction._x *= -1.0f;
-//	}
-//
-//	if (center._y > WIN_HEIGHT || center._y < 0)
-//	{
-//		_direction._y *= -1.0f;
-//	}
-//}
-
-void Bullet::Attack_Cannon(shared_ptr<class Cannon> cannon)
+void Bullet::Attack_Cannon(shared_ptr<Cannon> cannon)
 {
 	if (IsActive() == false)
 		return;
+
 	// cannon을 어떻게 공격할 것인가
-	// -> cannon의 body
+	// => cannon의 body
 	if (cannon->GetCollider()->IsCollision(_col))
 	{
 		SetActive(false);
 	}
 }
 
-void Bullet::Attack_cannon()
+void Bullet::Attack_Cannon()
 {
 	if (_target.expired() == false)
 	{
 		shared_ptr<Cannon> targetCannon = _target.lock();
 		shared_ptr<Collider> targetCannonCol = targetCannon->GetCollider();
-		if(targetCannonCol->IsCollision(_col))
+		if (targetCannonCol->IsCollision(_col))
 		{
+			targetCannon->TakeDamage();
 			SetActive(false);
 		}
 	}

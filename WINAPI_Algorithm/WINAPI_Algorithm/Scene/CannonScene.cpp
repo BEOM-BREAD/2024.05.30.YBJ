@@ -4,10 +4,10 @@
 #include "Object/Bullet.h"
 
 // 사양서
-// 단체 포트리스
+// 턴제 포트리스
 // 각 cannon을 턴마다 서로 컨트롤을 받아서 공격
 // cannon의 HP는 5
-// 맞으면 hp는 -1, hp가 0이면 cannon이 사라짐
+// 맞으면 hp - 1, hp가 0이면 cannon이 사라짐
 
 CannonScene::CannonScene()
 {
@@ -21,7 +21,6 @@ CannonScene::CannonScene()
 	{
 		bullet->SetTarget(_cannon2);
 	}
-
 	for (auto bullet : _cannon2->GetBullets())
 	{
 		bullet->SetTarget(_cannon1);
@@ -30,29 +29,46 @@ CannonScene::CannonScene()
 
 CannonScene::~CannonScene()
 {
+
 }
 
 void CannonScene::Update()
 {
-	{
-		_cannon1->Update();
-		_cannon2->Update();
-
-		if (_cannon1->isControlled && (GetAsyncKeyState(VK_SPACE) & 0x0001))
-		{
-			_cannon2->TakeDamage();
-		}
-		else if (_cannon2->isControlled && (GetAsyncKeyState(VK_SPACE) & 0x0001))
-		{
-			_cannon1->TakeDamage();
-		}
-	}
+	_cannon1->Update();
+	_cannon2->Update();
 
 	// Attack1
 	//for (auto bullet : _cannon1->GetBullets())
 	//{
 	//	bullet->Attack_Cannon(_cannon2);
 	//}
+
+	if (!_cannon1->IsDead() || !_cannon2->IsDead())
+	{
+		if (_cannon1->isControlled)
+		{
+			if (_cannon1->GetBulletvs() >= 1)
+			{
+				_cannon1->isControlled = false;
+				_cannon2->isControlled = true;
+				_cannon1->ResetBulletvs();
+			}
+		}
+		else
+		{
+			if (_cannon2->GetBulletvs() >= 1)
+			{
+				_cannon2->isControlled = false;
+				_cannon1->isControlled = true;
+				_cannon2->ResetBulletvs();
+			}
+		}
+	}
+
+
+
+
+
 }
 
 void CannonScene::Render(HDC hdc)
