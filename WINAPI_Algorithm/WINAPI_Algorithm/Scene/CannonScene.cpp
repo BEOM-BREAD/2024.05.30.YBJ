@@ -64,11 +64,6 @@ void CannonScene::Update()
 			}
 		}
 	}
-
-
-
-
-
 }
 
 void CannonScene::Render(HDC hdc)

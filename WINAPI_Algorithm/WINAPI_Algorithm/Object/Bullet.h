@@ -23,12 +23,12 @@ public:
 
 private:
 	bool _isActive = false;
+
 	shared_ptr<Collider> _col;
 	Vector2 _direction = Vector2(1, 0);
 	float _speed = 7.0f;
 
 	Vector2 _downVector = Vector2();
-
 	float _lifeTime = 0.0f;
 	float _delayTime = 3.0f;
 

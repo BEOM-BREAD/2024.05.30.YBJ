@@ -120,6 +120,7 @@ void Cannon::Fire()
 void Cannon::TakeDamage()
 {
 	_hp--;
+
 	if (IsDead())
 	{
 		IsActive = false;
