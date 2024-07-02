@@ -51,7 +51,7 @@ void CannonScene::Update()
 			{
 				_cannon1->isControlled = false;
 				_cannon2->isControlled = true;
-				_cannon1->ResetBulletvs();
+				_cannon1->BulletVS();
 			}
 		}
 		else
@@ -60,7 +60,7 @@ void CannonScene::Update()
 			{
 				_cannon2->isControlled = false;
 				_cannon1->isControlled = true;
-				_cannon2->ResetBulletvs();
+				_cannon2->BulletVS();
 			}
 		}
 	}

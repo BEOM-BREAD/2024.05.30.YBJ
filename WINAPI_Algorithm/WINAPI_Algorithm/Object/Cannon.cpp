@@ -56,6 +56,7 @@ void Cannon::Render(HDC hdc)
 		bullet->Render(hdc);
 }
 
+
 void Cannon::Move()
 {
 	if (!IsActive) return;

@@ -147,6 +147,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Arkanoid.h" />
+    <ClInclude Include="Scene\ArkanoidScene.h" />
     <ClInclude Include="Object\Maze\Maze.h" />
     <ClInclude Include="Object\Maze\Block.h" />
     <ClInclude Include="Object\Maze\Player.h" />
@@ -173,6 +175,8 @@
     <ClInclude Include="WINAPI_Algorithm.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Arkanoid.cpp" />
+    <ClCompile Include="Scene\ArkanoidScene.cpp" />
     <ClCompile Include="Object\Maze\Maze.cpp" />
     <ClCompile Include="Object\Maze\Block.cpp" />
     <ClCompile Include="Object\Maze\Player.cpp" />
