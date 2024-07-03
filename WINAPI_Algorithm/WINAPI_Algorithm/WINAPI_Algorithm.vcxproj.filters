@@ -90,7 +90,7 @@
     <ClInclude Include="Scene\ArkanoidScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Arkanoid.h">
+    <ClInclude Include="Object\Arkanoid\Arkanoid.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -161,7 +161,7 @@
     <ClCompile Include="Scene\ArkanoidScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Arkanoid.cpp">
+    <ClCompile Include="Object\Arkanoid\Arkanoid.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

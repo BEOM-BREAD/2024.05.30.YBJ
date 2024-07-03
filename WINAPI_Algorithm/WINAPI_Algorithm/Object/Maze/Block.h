@@ -3,11 +3,10 @@ class Block : public RectCollider
 {
 public:
 	enum class BlockType
-	{
-		NONE, 
-		ABLE,
-		DISABLE,
-		PLAYER_POS
+	{ 
+		ABLE,	// 0
+		DISABLE,   // 1
+		PLAYER_POS	  //2
 	};
 
 	Block();
@@ -23,9 +22,8 @@ public:
 
 
 private:
-	BlockType _type = BlockType::NONE;
+	BlockType _type = BlockType::ABLE;
 
 	vector<HBRUSH> _brushes;
-
 };
 

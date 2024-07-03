@@ -93,9 +93,12 @@ public:
 		return result;
 	}
 
-	float Length() const;
+	bool operator==(const Vector2& other);
+	bool operator != (const Vector2 & other);
 
+	float Length() const;
 	float Distance(Vector2 other)const;
+	float Angle() const;
 
 	void Normalize();
 
