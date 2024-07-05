@@ -147,6 +147,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Object\Arkanoid\ArkaRect.h" />
+    <ClInclude Include="Object\Arkanoid\Ball.h" />
     <ClInclude Include="Object\Arkanoid\Arkanoid.h" />
     <ClInclude Include="Scene\ArkanoidScene.h" />
     <ClInclude Include="Object\Maze\Maze.h" />
@@ -169,12 +171,15 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="Program\Program.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Object\Arkanoid\Stick.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="FrameWork\Vector2.h" />
     <ClInclude Include="Types.h" />
     <ClInclude Include="WINAPI_Algorithm.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Object\Arkanoid\ArkaRect.cpp" />
+    <ClCompile Include="Object\Arkanoid\Ball.cpp" />
     <ClCompile Include="Object\Arkanoid\Arkanoid.cpp" />
     <ClCompile Include="Scene\ArkanoidScene.cpp" />
     <ClCompile Include="Object\Maze\Maze.cpp" />
@@ -206,6 +211,7 @@
     </ClCompile>
     <ClCompile Include="Program\Program.cpp" />
     <ClCompile Include="FrameWork\Vector2.cpp" />
+    <ClCompile Include="Object\Arkanoid\Stick.cpp" />
     <ClCompile Include="WINAPI_Algorithm.cpp" />
   </ItemGroup>
   <ItemGroup>

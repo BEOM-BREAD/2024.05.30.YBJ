@@ -111,7 +111,7 @@ void Cannon::Fire()
 
 		if (iter != _bullets.end())
 		{
-			(*iter)->Fire(_barrel->GetEndPos(), _barrel->GetDirection());
+			(*iter)->Fire(_barrel->GetBarrelEnd(), _barrel->GetDirection());
 			_bulletvs++;
 		}
 	}

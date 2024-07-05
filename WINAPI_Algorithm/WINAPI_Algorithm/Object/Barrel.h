@@ -3,6 +3,7 @@ class Barrel
 {
 public:
 	Barrel();
+	Barrel(Vector2 dir, float length);
 	~Barrel();
 
 	void Update();
@@ -11,8 +12,8 @@ public:
 	void SetStart(Vector2 start);
 	void SetAngle(float angle);
 
-	Vector2 GetEndPos() { return _line->_end; }
-	Vector2 GetDirection() { return _direction; }
+	Vector2 GetBarrelEnd();
+	Vector2 GetDirection();
 
 private:
 	shared_ptr<Line> _line;
