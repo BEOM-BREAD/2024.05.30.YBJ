@@ -17,25 +17,25 @@
 #include <memory>
 #include <string>
 #include <stack>
+#include <queue>
 
 using namespace std;
+
 #include "Types.h"
 
 // FrameWork
-#include "FrameWork/Vector2.h"
-#include "FrameWork/Collider.h"
-#include "FrameWork/RectCollider.h"
-#include "FrameWork/CircleCollider.h"
-#include "FrameWork/Line.h"
+#include "Framework/Vector2.h"
+#include "Framework/Line.h"
+#include "Framework/Collider.h"
+#include "Framework/RectCollider.h"
+#include "Framework/CircleCollider.h"
 
 // Program
-#include"Program/Program.h"
+#include "Program/Program.h"
 
 // Scene
 #include "Scene/Scene.h"
 #include "Scene/PaintScene.h"
-#include "Scene/LineScene.h"
-
 
 extern Vector2 mousePos;
 extern HWND hWnd;
