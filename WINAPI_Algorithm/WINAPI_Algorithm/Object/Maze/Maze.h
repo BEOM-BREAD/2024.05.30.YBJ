@@ -10,6 +10,14 @@ class Block;
 class Maze
 {
 public:
+    struct Edge
+    {
+        Vector2 u;
+        Vector2 v;
+
+        int cost = 0;
+    };
+
 	Maze();
 	~Maze();
 
@@ -17,6 +25,7 @@ public:
 	void Render(HDC hdc);
 
 	void CreateMaze();
+    void CreateMaze_Kruskal();
 	Block::BlockType GetBlockType(int y, int x);
 	void SetBlockType(int y, int x, Block::BlockType type);
 
@@ -28,53 +37,3 @@ public:
 private:
 	vector<vector<shared_ptr<Block>>> _blocks;
 };
-
-#include <vector>
-#include <queue>
-using namespace std;
-
-int solution(vector<vector<int> > maps)
-{
-    int n = maps.size();
-    int m = maps[0].size();
-
-    vector<pair<int, int>> directions = { {-1, 0}, {1, 0}, {0, -1}, {0, 1} };
-
-    queue<pair<int, int>> q;
-    q.push({ 0, 0 });
-    vector<vector<bool>> visited(n, vector<bool>(m, false));
-    visited[0][0] = true;
-
-    int distance = 1;
-
-    while (!q.empty())
-    {
-        int size = q.size();
-
-        for (int i = 0; i < size; ++i)
-        {
-            int r = q.front().first;
-            int c = q.front().second;
-            q.pop();
-
-            for (auto& dir : directions)
-            {
-                int nr = r + dir.first;
-                int nc = c + dir.second;
-                if (nr >= 0 && nr < n && nc >= 0 && nc < m && !visited[nr][nc] && maps[nr][nc] == 1)
-                {
-                    if (nr == n - 1 && nc == m - 1)
-                    {
-                        return distance + 1;
-                    }
-                    q.push({ nr, nc });
-                    visited[nr][nc] = true;
-                }
-            }
-        }
-
-        distance++;
-    }
-
-    return -1;
-}

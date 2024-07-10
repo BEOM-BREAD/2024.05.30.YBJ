@@ -11,6 +11,7 @@
 #include <tchar.h>
 #include <time.h>
 
+#include <iostream>
 #include <vector>
 #include <unordered_map>
 #include <algorithm>
@@ -24,6 +25,7 @@ using namespace std;
 #include "Types.h"
 
 // FrameWork
+#include "FrameWork/DisJointSet.h"
 #include "Framework/Vector2.h"
 #include "Framework/Line.h"
 #include "Framework/Collider.h"

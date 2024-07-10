@@ -20,7 +20,8 @@ void Player::BeginPlay()
 	_pos = _maze->GetStartPos();
 
 	_visited = vector<vector<bool>>(MAXCOUNT_X, vector<bool>(MAXCOUNT_Y, false));
-	AStart(_pos, _maze->GetEndPos());
+	DFS(_pos);
+	// AStart(_pos, _maze->GetEndPos());
 }
 
 void Player::RightHand()
@@ -391,7 +392,7 @@ void Player::AStart(Vector2 start, Vector2 end)
 		}
 	}
 
-	Vector2 check = _maze->GetEndPos();
+	 Vector2 check = _maze->GetEndPos();
 	_path.push_back(check);
 	while (true)
 	{
@@ -423,7 +424,7 @@ void Player::Update()
 		return;
 	}
 
-	_time += 0.1f;
+	_time += 0.8f;
 	if (_time > 1.0f)
 	{
 		_time = 0.0f;
