@@ -20,8 +20,8 @@ void Player::BeginPlay()
 	_pos = _maze->GetStartPos();
 
 	_visited = vector<vector<bool>>(MAXCOUNT_X, vector<bool>(MAXCOUNT_Y, false));
-	DFS(_pos);
-	// AStart(_pos, _maze->GetEndPos());
+	//BFS(_pos);
+	AStart(_pos, _maze->GetEndPos());
 }
 
 void Player::RightHand()
@@ -421,10 +421,13 @@ void Player::Update()
 		_pathIndex = 0;
 		_path.clear();
 
+		// _maze->CreateMaze_Kruskal();
+		// BeginPlay();
+
 		return;
 	}
 
-	_time += 0.8f;
+	_time += 0.3f;
 	if (_time > 1.0f)
 	{
 		_time = 0.0f;
