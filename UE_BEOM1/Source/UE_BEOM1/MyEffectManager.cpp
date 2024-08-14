@@ -51,5 +51,8 @@ void AMyEffectManager::Play(FString name, FVector location, FRotator rotator)
 		return;
 
 	UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), _table[name], location, rotator);
+
+	// ActorComponent : invencomponent, statComponent
+	// SceneComponent : Camera, SpringArm
 }
 
