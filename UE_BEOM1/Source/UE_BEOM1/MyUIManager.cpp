@@ -12,14 +12,23 @@ AMyUIManager::AMyUIManager()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	static ConstructorHelpers::FClassFinder<UUserWidget> CrossHair(TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/BluePrint/UI/MyCrossHair_BP.MyCrossHair_BP_C'"));
+
+	if (CrossHair.Succeeded())
+	{
+		_crossHair = CreateWidget<UUserWidget>(GetWorld(), CrossHair.Class);
+	}
+
 	static ConstructorHelpers::FClassFinder<UMyInventoryUI> invenClass(TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/BluePrint/UI/MyInventoryUI_BP.MyInventoryUI_BP_C'"));
 
 	if (invenClass.Succeeded())
 	{
 		auto temp = invenClass.Class;
-		// _invenWidget = CreateWidget<UMyInventoryUI>(GetWorld(), invenClass.Class);
+		_invenWidget = CreateWidget<UMyInventoryUI>(GetWorld(), invenClass.Class);
 	}
 
+	_widgets.Add(_crossHair);
+	_widgets.Add(_invenWidget);
 }
 
 // Called when the game starts or when spawned
@@ -27,6 +36,8 @@ void AMyUIManager::BeginPlay()
 {
 	Super::BeginPlay();
 
+	OpenWidget(UIType::CrossHair);
+	OpenWidget(UIType::Inventory);
 }
 
 // Called every frame
@@ -34,5 +45,34 @@ void AMyUIManager::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+void AMyUIManager::OpenWidget(UIType type)
+{
+	int32 typeNum = (int32)type;
+	if (_widgets.Num() <= typeNum)
+		return;
+
+	_widgets[typeNum]->SetVisibility(ESlateVisibility::Visible);
+	_widgets[typeNum]->AddToViewport(typeNum);
+}
+
+void AMyUIManager::ClosdeWidget(UIType type)
+{
+	int32 typeNum = (int32)type;
+	if (_widgets.Num() <= typeNum)
+		return;
+
+	_widgets[typeNum]->SetVisibility(ESlateVisibility::Hidden);
+	_widgets[typeNum]->RemoveFromViewport();
+}
+
+void AMyUIManager::closeAll()
+{
+	for (auto widget : _widgets)
+	{
+		widget->SetVisibility(ESlateVisibility::Hidden);
+		widget->RemoveFromViewport();
+	}
 }
 

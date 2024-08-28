@@ -26,6 +26,9 @@
 // Particle
 #include "MyEffectManager.h"
 
+// Projectile
+#include "MyProjectile.h"
+
 // Sets default values
 AMyCharacter::AMyCharacter()
 {
@@ -63,6 +66,8 @@ AMyCharacter::AMyCharacter()
 	}
 
 	APawn::AutoPossessAI = EAutoPossessAI::PlacedInWorldOrSpawned;
+
+	// static ConstructorHelpers::FClassFinder<AMyProjectile> projectileClass(TEXT("/Script/Engine.Blueprint'/Game/BluePrint/Object/MyProjectile_BP.MyProjectile_BP_C'"));
 }
 
 void AMyCharacter::BeginPlay()
@@ -112,6 +117,18 @@ void AMyCharacter::OnAttackEnded(UAnimMontage* Montage, bool bInterrupted)
 
 void AMyCharacter::AttackHit()
 {
+	//Projectile
+	// TODO : Projectile skill...
+	if (_projectileClass)
+	{
+		FVector forward = GetActorForwardVector();
+		FVector fireLocation = GetActorLocation() + forward * 150;
+
+		auto projectile =  GetWorld()->SpawnActor<AMyProjectile>(_projectileClass, fireLocation, FRotator::ZeroRotator);
+		projectile->FireInDirection(forward);
+	}
+
+	// Attack chanel
 	FHitResult hitResult;
 	FCollisionQueryParams params(NAME_None, false, this);
 
